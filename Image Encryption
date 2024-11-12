@@ -1,0 +1,42 @@
+from PIL import Image
+
+def encrypt_image(image_path, key):
+    img = Image.open(image_path) # open the image from the specified path
+    pixels =img.load() # Load pixel data for manipulation
+
+    width, height = img.size  # Get width and height of the image
+
+    for x in range(width):
+        for y in range(height):
+            r, g, b = pixels[x, y]
+
+            # swapping red and blue channels
+            encrypted_pixel = (b, g, r)
+
+            pixels[x, y] = encrypted_pixel
+
+        img.save(output_path)
+        print("Image encrypted successfully")
+
+def decrypt_image(image_path, key):
+    img = Image.open(image_path)
+    pixels =img.load() # Load pixel data for manipulation
+
+    width, height = img.size
+
+    for x in range(width):
+        for y in range(height):
+            r, g, b = pixels[x, y]
+
+            # swapping red and blue channels
+            decrypted_pixel = (b, g, r)
+
+            pixels[x, y] = decrypted_pixel
+
+        img.save(output_path)
+        print("Image decrypted successfully")
+
+# image path
+input_image = r"C:\Users\User\Documents\Internship-01\Task-02\input.jpg"
+encrypted_image = r"C:\Users\User\Documents\Internship-01\Task-02\input.jpg"
+decrypted_image = r"C:\Users\User\Documents\Internship-01\Task-02\input.jpg"
